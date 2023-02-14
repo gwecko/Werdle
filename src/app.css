@@ -9,6 +9,24 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --bg-gradient: radial-gradient(
+      at 73% 96%,
+      hsla(262, 39%, 34%, 0.84) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 62% 40%, hsla(240, 39%, 20%, 0.92) 0px, transparent 50%),
+    radial-gradient(at 84% 13%, hsla(220, 65%, 36%, 0.79) 0px, transparent 50%),
+    radial-gradient(at 25% 32%, hsla(187, 22%, 38%, 0.47) 0px, transparent 50%),
+    radial-gradient(at 85% 59%, hsla(266, 54%, 44%, 1) 0px, transparent 50%),
+    radial-gradient(at 61% 49%, hsla(260, 49%, 40%, 1) 0px, transparent 50%),
+    radial-gradient(at 20% 10%, hsla(240, 68%, 33%, 1) 0px, transparent 50%);
+
+  --bg-size: 200% auto;
+  --bg-position: 0%;
+  --bg-timing: cubic-bezier(0,.28,1,.69);
+  --correct-box: linear-gradient(90deg, rgba(72,232,32,0.43) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 50%);
+  --partial-correct-box: linear-gradient(90deg, rgba(235, 209, 81, 0.468) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 50%);
+  --incorrect-box: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 50%);
 }
 
 @media (prefers-color-scheme: light) {
@@ -31,17 +49,7 @@ body {
   min-height: 100vh;
   color: white;
   background-color: hsla(266, 92%, 22%, 1);
-  background-image: radial-gradient(
-      at 73% 96%,
-      hsla(262, 39%, 34%, 0.84) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 62% 40%, hsla(240, 39%, 20%, 0.92) 0px, transparent 50%),
-    radial-gradient(at 84% 13%, hsla(220, 65%, 36%, 0.79) 0px, transparent 50%),
-    radial-gradient(at 25% 32%, hsla(187, 22%, 38%, 0.47) 0px, transparent 50%),
-    radial-gradient(at 85% 59%, hsla(266, 54%, 44%, 1) 0px, transparent 50%),
-    radial-gradient(at 61% 49%, hsla(260, 49%, 40%, 1) 0px, transparent 50%),
-    radial-gradient(at 20% 10%, hsla(240, 68%, 33%, 1) 0px, transparent 50%);
+  background-image: var(--bg-gradient);
   background-origin: border-box;
   overflow-x: hidden;
   text-align: center;
@@ -75,7 +83,9 @@ h1 {
 
 input{
   color: white;
-  background: none;
+  background: transparent;
+  background-position: 100%;
+  background-size: 200%;
   text-align: center;
   font-size: 1.8rem;
   border: none;
@@ -83,10 +93,39 @@ input{
   width: 100%;
   height: 100%;
   text-transform: uppercase;
+  transition-delay: 0ms !important;
+  transition-duration: 0ms !important;
 }
 
 input:focus{
   background-color: #747bff2f;
   outline: none;
   caret-color: transparent;
+  transition-delay: 0ms !important;
+  transition-duration: 0ms !important;
 }
+
+.correct{
+  background: var(--correct-box);
+  background-position: var(--bg-position);
+  background-size: var(--bg-size);
+  transition-timing-function: var(--bg-timing);
+  /* background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.partial-correct{
+  background: var(--partial-correct-box);
+  background-size: var(--bg-size);
+  background-position: var(--bg-position);
+  transition-timing-function: var(--bg-timing);
+}
+
+.incorrect{
+  background: var(--incorrect-box);
+  background-size: var(--bg-size);
+  background-position: var(--bg-position);
+  transition-timing-function: var(--bg-timing);
+}
+
