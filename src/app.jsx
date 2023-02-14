@@ -1,18 +1,21 @@
 import { useState } from 'preact/hooks';
-import { wordsArrayLength } from '../populateDatabase/words';
+
+import { sixLetterWords, wordsArrayLength } from './assets/words';
 import PocketBase from 'pocketbase';
 import { render } from 'preact';
 const cl = (thing) => { console.log(thing) }
 
 
-async function getWord() {
-  const pb = new PocketBase('http://127.0.0.1:8090');
-  const randomIdValue = Math.floor(Math.random() * wordsArrayLength);
-  const res = await pb.collection('words').getFirstListItem(`word_number = ${randomIdValue}`);
-  return res.word;
-}
+// async function getWord() {
+//   const pb = new PocketBase('http://127.0.0.1:8090');
+//   const randomIdValue = Math.floor(Math.random() * wordsArrayLength);
+//   const res = await pb.collection('words').getFirstListItem(`word_number = ${randomIdValue}`);
+//   return res.word;
+// }
+// const tempWord = await getWord();
 
-const tempWord = await getWord();
+const randomIdValue = Math.floor(Math.random() * wordsArrayLength);
+const tempWord = sixLetterWords[randomIdValue]
 const correctWord = tempWord.split('')
 cl(correctWord)
 
