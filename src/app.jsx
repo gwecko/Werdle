@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
 
 import { sixLetterWords, wordsArrayLength } from './assets/words';
-import PocketBase from 'pocketbase';
+// import PocketBase from 'pocketbase';
 import { render } from 'preact';
 const cl = (thing) => { console.log(thing) }
 
@@ -23,9 +23,6 @@ const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm
 const NUM_OF_BOXES = 36;
 const rowStartIndexes = ['0', '6', '12', '18', '24', '30'];
 const rowEndIndexes = ['5', '11', '17', '23', '29', '35'];
-
-// for css transitions
-const DURATION = 150;
 
 
 function setCursorToStart(boxElements) {
@@ -57,7 +54,8 @@ const LetterBoxGrid = () => {
           disabled={true}
           autoFocus={false}
           className={boxStyling[index]}
-          style={`transition-delay: ${(index % 6) * DURATION}ms; transition-duration: ${DURATION}ms;`}
+          style={`--column-delay: ${index % 6}`}
+          delay={800}
         />
       </div>
     );
