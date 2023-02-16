@@ -55,7 +55,6 @@ const LetterBoxGrid = () => {
           autoFocus={false}
           className={boxStyling[index]}
           style={`--column-delay: ${index % 6}`}
-          delay={800}
         />
       </div>
     );
@@ -157,13 +156,12 @@ const LetterBoxGrid = () => {
       return boxStyling[i] = 'incorrect';
     })  
     
-    // setBoxStyling(boxStyling)
-    
+    setBoxStyling(boxStyling)
     
     if (correctIndexes.length === 6) {
+      // winner
       const currentBox = document.activeElement;
       toggleDisable(currentBox)
-      cl('winner alert')
     } else {
       // move the cursor
       const nextBox =
