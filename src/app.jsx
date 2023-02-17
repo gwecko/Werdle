@@ -29,6 +29,7 @@ function setCursorToStart(boxElements) {
   let startingBox = boxElements[0].props.children;
   startingBox.props.disabled = false;
   startingBox.props.autoFocus = true;
+  
 }
 
 function toggleDisable(boxInput) {
@@ -95,12 +96,14 @@ const LetterBoxGrid = () => {
       } else {
         // A check to make sure we aren't going back a row
         const previousBox =
-          document.activeElement.parentElement.previousSibling.firstChild;
-        if (!rowEndIndexes.includes(previousBox.getAttribute("boxIndex"))) {
-          toggleDisable(previousBox);
-          previousBox.focus();
-          toggleDisable(currentBox);
-          tempValues.splice(boxIndex - 1, 1, "");
+          document.activeElement.parentElement.previousSibling?.firstChild;
+        if (previousBox) {
+          if (!rowEndIndexes.includes(previousBox.getAttribute("boxIndex"))) {
+            toggleDisable(previousBox);
+            previousBox.focus();
+            toggleDisable(currentBox);
+            tempValues.splice(boxIndex - 1, 1, "");
+          }
         }
       }
     // "if enter key is pressed at the end of a row with a letter in it"
@@ -158,12 +161,13 @@ const LetterBoxGrid = () => {
     
     setBoxStyling(boxStyling)
     
+    const currentBox = document.activeElement;
     if (correctIndexes.length === 6) {
       // winner
-      const currentBox = document.activeElement;
       toggleDisable(currentBox)
     } else {
       // move the cursor
+      toggleDisable(currentBox);
       const nextBox =
         document.activeElement.parentElement.nextSibling?.firstChild;
       if (nextBox) {
@@ -176,8 +180,11 @@ const LetterBoxGrid = () => {
 
   return (
     <>
-      <div className="grid">{boxElements}</div>
-      {setCursorToStart(boxElements)}
+      <div className="grid">
+        {boxElements}
+        {setCursorToStart(boxElements)}
+      </div>
+      {}
     </>
   );
 }

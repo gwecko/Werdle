@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, Avenir, monospace, Helvetica, Arial, sans-serif;
   font-size: 24px;
   line-height: 24px;
   font-weight: 400;
@@ -18,11 +18,11 @@
                  radial-gradient(at 20% 10%, hsla(240, 68%, 33%, 1) 0px, transparent 50%);
   --bg-size: 200% auto;
   --bg-position: 0%;
-  --bg-duration: 175ms;
+  --bg-duration: 125ms;
   --bg-timing: cubic-bezier(0,.28,1,.69);
   --correct-box: linear-gradient(90deg, rgba(72,232,32,0.43) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 50%);
   --partial-correct-box: linear-gradient(90deg, rgba(235, 209, 81, 0.468) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 50%);
-  --incorrect-box: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 50%);
+  --incorrect-box: linear-gradient(90deg, rgba(31, 31, 71, 0.4) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 50%);
 }
 
 @media (prefers-color-scheme: light) {
@@ -44,7 +44,7 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   color: white;
-  background-color: hsla(266, 92%, 22%, 1);
+  background-color: rgb(39, 24, 136);
   background-image: var(--bg-gradient);
   background-origin: border-box;
   overflow-x: hidden;
@@ -61,12 +61,11 @@ h1 {
 }
 
 .grid {
-  --column-gap: 2px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   row-gap: .5rem;
-  column-gap: var(--column-gap);
-  padding: 0 calc(20% - var(--column-gap));
+  column-gap: 2px;
+  padding: 30px;
   max-width: 480px;
   flex-grow: 1;
 }
@@ -75,26 +74,71 @@ h1 {
   aspect-ratio: 1;
   border: 2px solid #747bff9e;
   border-radius: 3px;
+  /* padding: auto;
+  margin: auto; */
+  /* text-align: center; */
+      vertical-align: 30% !important;
+}
+
+/* iPhone (11) */
+@media only screen 
+    and (device-width: 414px) 
+    and (device-height: 896px) 
+    and (-webkit-device-pixel-ratio: 2) { 
+    body{
+      overflow-y: hidden;
+    }
+
+    h1{
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      row-gap: .55rem;
+      column-gap: 1px;
+      padding: 0px 30px;
+      flex-grow: 1;
+    }
+    .box {
+      aspect-ratio: 1;
+      height: 45px;
+      border: .07rem solid #747bff9e;
+    }
+    input{
+      font-size: 10px !important;
+      border: none;
+      font-size: 43px !important;
+    }
 }
 
 input{
   color: white;
   background: transparent;
+  position: relative;
   background-position: 100%;
   background-size: 200%;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   border: none;
-  padding: 0;
+  border-radius: 0;
   width: 100%;
   height: 100%;
   text-transform: uppercase;
+  padding: 0px;
+  margin: 0px;;
 }
 
-input:focus{
+input:focus, 
+input:active{
   background-color: #747bff2f;
   outline: none;
   caret-color: transparent;
+}
+
+input:disabled{
+  opacity: 1;
 }
 
 
