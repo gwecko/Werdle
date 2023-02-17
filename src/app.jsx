@@ -184,7 +184,6 @@ const LetterBoxGrid = () => {
         {boxElements}
         {setCursorToStart(boxElements)}
       </div>
-      {}
     </>
   );
 }

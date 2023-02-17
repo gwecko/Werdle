@@ -80,11 +80,8 @@ h1 {
       vertical-align: 30% !important;
 }
 
-/* iPhone (13 Pro Max) */
-@media only screen 
-    and (device-width: 428px) 
-    and (device-height: 926px) 
-    and (-webkit-device-pixel-ratio: 3){
+/* iPad */
+    @media only screen and (max-width: 768px) {
     body{
       overflow-y: hidden;
     }
