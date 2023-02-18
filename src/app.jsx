@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 
 import { sixLetterWords, wordsArrayLength } from './assets/words';
+import SocialLinks from './socialLinks';
 // import PocketBase from 'pocketbase';
 import { render } from 'preact';
 const cl = (thing) => { console.log(thing) }
@@ -194,6 +195,7 @@ export function App() {
     <>
       <h1>Werdle!</h1>
       <LetterBoxGrid />
+      <SocialLinks />
     </>
   );
 }
