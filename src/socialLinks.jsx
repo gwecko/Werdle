@@ -1,6 +1,6 @@
 // import { preact } from "@preact/preset-vite";
 // import preactPlugin from "@preact/preset-vite";
-import IconLinkedIn from "./assets/linkedin.js";
+import IconLinkedIn from "./assets/linkedin.jsx";
 
 
 

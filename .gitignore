@@ -24,3 +24,4 @@ pocketbase
 *.njsproj
 *.sln
 *.sw?
+.vercel
